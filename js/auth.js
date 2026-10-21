@@ -6,24 +6,48 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
+    const forgotForm = document.getElementById('forgot-form'); // 👈 Formulário de recuperação
     
     const showRegisterBtn = document.getElementById('show-register');
     const showLoginBtn = document.getElementById('show-login');
+    const showForgotBtn = document.getElementById('show-forgot');     // 👈 Botão "Esqueceu a senha?"
+    const backToLoginBtn = document.getElementById('back-to-login'); // 👈 Botão "Voltar ao Login"
+    
     const authError = document.getElementById('auth-error');
     const btnLogout = document.getElementById('btn-logout');
 
-    // Alternar entre formulários de Login e Cadastro
+    // Alternar para a tela de Cadastro
     showRegisterBtn.addEventListener('click', (e) => {
         e.preventDefault();
         loginForm.classList.add('hidden');
+        forgotForm.classList.add('hidden');
         registerForm.classList.remove('hidden');
         authError.classList.add('hidden');
     });
 
+    // Alternar para a tela de Login (vindo do cadastro ou recuperação)
     showLoginBtn.addEventListener('click', (e) => {
         e.preventDefault();
         registerForm.classList.add('hidden');
+        forgotForm.classList.add('hidden');
         loginForm.classList.remove('hidden');
+        authError.classList.add('hidden');
+    });
+
+    backToLoginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        registerForm.classList.add('hidden');
+        forgotForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+        authError.classList.add('hidden');
+    });
+
+    // Alternar para a tela de Recuperação de Senha
+    showForgotBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.classList.add('hidden');
+        registerForm.classList.add('hidden');
+        forgotForm.classList.remove('hidden');
         authError.classList.add('hidden');
     });
 
@@ -79,6 +103,29 @@ document.addEventListener('DOMContentLoaded', () => {
             if (error) throw error;
 
             initGameSession(data.user);
+        } catch (err) {
+            showError(err.message);
+        }
+    });
+
+    // Enviar e-mail de recuperação de senha via Supabase
+    forgotForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!window.supabaseClient) return showError('Supabase não configurado!');
+
+        const email = document.getElementById('forgot-email').value.trim();
+
+        try {
+            const { error } = await window.supabaseClient.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.href, // Redireciona de volta para o jogo após redefinir
+            });
+
+            if (error) throw error;
+
+            alert('E-mail de recuperação enviado! Verifique sua caixa de entrada.');
+            forgotForm.reset();
+            forgotForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
         } catch (err) {
             showError(err.message);
         }

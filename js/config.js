@@ -1,14 +1,15 @@
 /* ==================== CONFIGURAÇÃO DO SUPABASE ==================== */
 
-// URL base do projeto (sem o /rest/v1/ no final)
-const SUPABASE_URL = 'https://vhccazqkultpnwouzclr.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_jnLWiD29IggXpZP3OqG00w_juq_HqKs';
+// Substitua pelas suas credenciais reais do projeto no Supabase
+// (Você encontra esses dados no painel do seu projeto em Project Settings > API)
+const SUPABASE_URL = 'SUA_SUPABASE_URL_AQUI';
+const SUPABASE_ANON_KEY = 'SUA_SUPABASE_ANON_KEY_AQUI';
 
 // Inicializa o cliente do Supabase globalmente
 let supabaseClient = null;
 
 try {
-    if (window.supabase && SUPABASE_URL !== 'https://vhccazqkultpnwouzclr.supabase.co') {
+    if (window.supabase && SUPABASE_URL !== 'SUA_SUPABASE_URL_AQUI') {
         supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         console.log('🔌 Supabase conectado com sucesso!');
     } else {
