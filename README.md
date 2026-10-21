@@ -36,7 +36,7 @@ jaguar-club/
 
 ⚙️ Como Configurar e Rodar Localmente
  * Clone o repositório:
-   git clone [https://github.com/luispolis 124/jaguar-club.git](https://github.com/SEU_USUARIO/jaguar-club.git)
+   git clone [https://github.com/luispolis124/jaguar-club.git](https://github.com/luispolis124/jaguar-club.git)
 cd jaguar-club
 
  * Configure o Supabase:
@@ -51,17 +51,14 @@ const SUPABASE_ANON_KEY = 'SUA_SUPABASE_ANON_KEY_AQUI';
      npx http-server
 
 ☁️ Como Publicar no GitHub e Vercel
- * Suba para o GitHub:
-   git init
-git add .
-git commit -m "feat: estrutura inicial do Jaguar Club"
-git branch -M main
-git remote add origin [https://github.com/SEU_USUARIO/jaguar-club.git](https://github.com/SEU_USUARIO/jaguar-club.git)
-git push -u origin main
+ * Suba as atualizações para o GitHub:
+   git add .
+git commit -m "docs: atualiza documentação do README.md"
+git push origin main
 
  * Publique na Vercel:
    * Acesse vercel.com e faça login com sua conta do GitHub.
-   * Clique em Add New... > Project e selecione o repositório jaguar-club.
+   * Clique em Add New... > Project e selecione o repositório luispolis124/jaguar-club.
    * Clique em Deploy (nenhuma configuração de build é necessária, pois é um site estático puro).
 📜 Licença
 Distribuído sob a licença MIT. Sinta-se à vontade para modificar e criar novas salas e mini-games para o seu mundo virtual!
