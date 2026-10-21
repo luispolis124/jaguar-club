@@ -1,0 +1,13 @@
+# Dependências e ambientes locais
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Configurações de ambiente sensíveis (caso use variáveis locais)
+.env
+.env.local
+
+# Arquivos de build ou temporários
+dist/
+build/
+*.log
