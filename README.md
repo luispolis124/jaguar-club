@@ -1,4 +1,3 @@
-Claro! Aqui está apenas o conteúdo do arquivo README.md prontinho para você copiar e colar:
 # 🐆 Jaguar Club
 
 Um mundo virtual multijogador em tempo real inspirado em clássicos como Club Penguin, desenvolvido com **HTML5 Canvas**, **JavaScript Modular**, **CSS3** e **Supabase**.
