@@ -17,7 +17,7 @@
     <!-- Container Principal do App -->
     <div id="app">
 
-        <!-- ==================== TELA DE AUTENTICAÃ‡ÃƒO ==================== -->
+        <!-- ==================== TELA DE AUTENTICAÇÃO ==================== -->
         <div id="auth-screen" class="screen">
             <div class="auth-card">
                 <h1 class="logo-title">JAGUAR CLUB</h1>
@@ -29,7 +29,10 @@
                     <input type="email" id="login-email" placeholder="E-mail" required>
                     <input type="password" id="login-password" placeholder="Senha" required>
                     <button type="submit" class="btn btn-primary">Entrar na Ilha</button>
-                    <p class="toggle-auth">NÃ£o tem uma conta? <a href="#" id="show-register">Cadastre-se</a></p>
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.85rem;">
+                        <a href="#" id="show-forgot" style="color: #00a8ff; text-decoration: none;">Esqueceu a senha?</a>
+                        <a href="#" id="show-register" style="color: #00a8ff; text-decoration: none;">Cadastre-se</a>
+                    </div>
                 </form>
 
                 <!-- Form de Cadastro -->
@@ -45,14 +48,54 @@
                     </div>
 
                     <button type="submit" class="btn btn-success">Criar Conta</button>
-                    <p class="toggle-auth">JÃ¡ tem uma conta? <a href="#" id="show-login">FaÃ§a Login</a></p>
+                    <p class="toggle-auth">Já tem uma conta? <a href="#" id="show-login">Faça Login</a></p>
+                </form>
+
+                <!-- Form de Recuperação de Senha -->
+                <form id="forgot-form" class="auth-form hidden">
+                    <h2>Recuperar Senha</h2>
+                    <p style="font-size: 0.85rem; color: #dcdde1; margin-bottom: 5px;">Digite seu e-mail para receber o link de redefinição.</p>
+                    <input type="email" id="forgot-email" placeholder="E-mail cadastrado" required>
+                    <button type="submit" class="btn btn-primary">Enviar Link</button>
+                    <p class="toggle-auth"><a href="#" id="back-to-login">Lembrou a senha? Faça Login</a></p>
                 </form>
 
                 <div id="auth-error" class="error-message hidden"></div>
             </div>
         </div>
 
-        <!-- A tela do jogo e o canvas foram ocultados temporariamente aqui -->
+        <!-- ==================== TELA DO JOGO ==================== -->
+        <div id="game-screen" class="screen hidden">
+            
+            <!-- Canvas onde o mapa, jogabilidade e personagens são desenhados -->
+            <div id="canvas-container">
+                <canvas id="gameCanvas" width="960" height="540"></canvas>
+            </div>
+
+            <!-- Interface Superior (HUD) -->
+            <header id="game-hud">
+                <div class="user-info">
+                    <span id="hud-username">Jaguar</span>
+                    <div class="coins-badge">
+                        <!-- Imagem em Pixel Art de 16x16 pixels -->
+                        <img src="assets/images/coin.png" alt="Moeda" id="hud-coin-img" style="width: 16px; height: 16px; image-rendering: pixelated; image-rendering: crisp-edges; vertical-align: middle;">
+                        <span id="hud-coins">0</span>
+                    </div>
+                </div>
+                <button id="btn-logout" class="btn btn-danger btn-small">Sair</button>
+            </header>
+
+            <!-- Interface Inferior (Chat e Ações) -->
+            <footer id="game-controls">
+                <div class="chat-container">
+                    <form id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Digite uma mensagem..." maxlength="80" autocomplete="off">
+                        <button type="submit" class="btn btn-chat">Enviar</button>
+                    </form>
+                </div>
+            </footer>
+
+        </div>
 
     </div>
 
@@ -60,6 +103,7 @@
     <script src="js/config.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/player.js"></script>
+    <script src="js/rooms.js"></script>
     <script src="js/network.js"></script>
     <script src="js/game.js"></script>
 
