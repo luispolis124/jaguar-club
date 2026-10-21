@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaguar Club - Um Mundo Virtual</title>
+    
+    <!-- Estilos do Jogo -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    
+    <!-- Supabase JS Client (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Container Principal do App -->
+    <div id="app">
+
+        <!-- ==================== TELA DE AUTENTICAÇÃO ==================== -->
+        <div id="auth-screen" class="screen">
+            <div class="auth-card">
+                <h1 class="logo-title">JAGUAR CLUB</h1>
+                <p class="subtitle">Entre na ilha e divirta-se com seus amigos!</p>
+
+                <!-- Form de Login -->
+                <form id="login-form" class="auth-form">
+                    <h2>Entrar</h2>
+                    <input type="email" id="login-email" placeholder="E-mail" required>
+                    <input type="password" id="login-password" placeholder="Senha" required>
+                    <button type="submit" class="btn btn-primary">Entrar na Ilha</button>
+                    <p class="toggle-auth">Não tem uma conta? <a href="#" id="show-register">Cadastre-se</a></p>
+                </form>
+
+                <!-- Form de Cadastro -->
+                <form id="register-form" class="auth-form hidden">
+                    <h2>Criar Seu Jaguar</h2>
+                    <input type="text" id="reg-username" placeholder="Nome do seu Jaguar" maxlength="15" required>
+                    <input type="email" id="reg-email" placeholder="E-mail" required>
+                    <input type="password" id="reg-password" placeholder="Senha" required>
+                    
+                    <label for="reg-color">Escolha sua cor inicial:</label>
+                    <div class="color-picker">
+                        <input type="color" id="reg-color" value="#00a8ff">
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Criar Conta</button>
+                    <p class="toggle-auth">Já tem uma conta? <a href="#" id="show-login">Faça Login</a></p>
+                </form>
+
+                <div id="auth-error" class="error-message hidden"></div>
+            </div>
+        </div>
+
+        <!-- ==================== TELA DO JOGO ==================== -->
+        <div id="game-screen" class="screen hidden">
+            
+            <!-- Canvas onde o mapa, jogabilidade e personagens são desenhados -->
+            <div id="canvas-container">
+                <canvas id="gameCanvas" width="960" height="540"></canvas>
+            </div>
+
+            <!-- Interface Superior (HUD) -->
+            <header id="game-hud">
+                <div class="user-info">
+                    <span id="hud-username">Jaguar</span>
+                    <div class="coins-badge">
+                        🪙 <span id="hud-coins">0</span>
+                    </div>
+                </div>
+                <button id="btn-logout" class="btn btn-danger btn-small">Sair</button>
+            </header>
+
+            <!-- Interface Inferior (Chat e Ações) -->
+            <footer id="game-controls">
+                <div class="chat-container">
+                    <form id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Digite uma mensagem..." maxlength="80" autocomplete="off">
+                        <button type="submit" class="btn btn-chat">Enviar</button>
+                    </form>
+                </div>
+            </footer>
+
+        </div>
+
+    </div>
+
+    <!-- Scripts JavaScript do Jogo (Modularizados) -->
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/network.js"></script>
+    <script src="js/game.js"></script>
+
+</body>
+</html>
