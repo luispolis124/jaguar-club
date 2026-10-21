@@ -1,0 +1,131 @@
+/* ==================== CONTAINER DO JOGO ==================== */
+#game-screen {
+    background-color: #0c1017;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Canvas do Jogo */
+#canvas-container {
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid #2f3640;
+    background-color: #000;
+}
+
+#gameCanvas {
+    display: block;
+    cursor: crosshair;
+    image-rendering: pixelated; /* Mantém sprites nítidos */
+}
+
+/* ==================== HUD SUPERIOR ==================== */
+#game-hud {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    max-width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+#hud-username {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fbc531;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.coins-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(251, 197, 49, 0.2);
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: #fbc531;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 1px solid rgba(251, 197, 49, 0.4);
+}
+
+/* ==================== CONTROLES E CHAT (INFERIOR) ==================== */
+#game-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    max-width: 95%;
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 8px 12px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+#chat-form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+#chat-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+}
+
+#chat-input::placeholder {
+    color: #a4b0be;
+}
+
+.btn-chat {
+    background-color: #fbc531;
+    color: #1e272e;
+    padding: 6px 18px;
+    border-radius: 18px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.btn-chat:hover {
+    background-color: #e1b12c;
+}
