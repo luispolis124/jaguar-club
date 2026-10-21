@@ -3,9 +3,11 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Configurações de ambiente sensíveis (caso use variáveis locais)
+# Configurações de ambiente e chaves de API sensíveis
 .env
 .env.local
+.env.*.local
+js/config.js
 
 # Arquivos de build ou temporários
 dist/
